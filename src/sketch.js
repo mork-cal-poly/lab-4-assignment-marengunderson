@@ -10,6 +10,7 @@ function setup() {
 
 function draw() {
   background(220);
+  drawBackground();
 
   drawRhino(190, 400, -0.5, 0.5, leftRhinoX);
   drawRhino(545, 400, 0.5, 0.5, 0);
@@ -111,3 +112,26 @@ function draw() {
     pop();
     
   }
+
+  function drawBackground() {
+    push();
+    
+      //night background
+      noStroke();
+    
+      fill(20,20,60);
+      rect(0, 0, 800, 800);
+      
+      fill(34,34,59);
+      rect(0, 400, 800, 400);
+      
+      //moonlight
+      fill(237, 237, 168, 50);
+      triangle(370, 120, 100, 600, 650, 600);
+      
+      //moon
+      fill(233,237,168);
+      ellipse (370, 120, 100, 100);
+      
+    pop();
+    }
