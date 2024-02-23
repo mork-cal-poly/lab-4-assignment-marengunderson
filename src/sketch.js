@@ -1,4 +1,6 @@
 let leftRhinoX = 0;
+let rightRhinoX = 0;
+let clicked = false;
 function setup() {
   // These lines are fitting our canvas
   // where we want in the DOM
@@ -13,12 +15,41 @@ function draw() {
   drawBackground();
 
   drawRhino(190, 400, -0.5, 0.5, leftRhinoX);
-  drawRhino(545, 400, 0.5, 0.5, 0);
+  drawRhino(545, 400, 0.5, 0.5, rightRhinoX);
   drawRhino(350, 500, -0.25, 0.25, 0);
+
+  kissAnimationLeft();
+  kissAnimationRight();
   
-  leftRhinoX = leftRhinoX - 1;
+ // leftRhinoX = leftRhinoX - 1;
 }
 
+function kissAnimationLeft() {
+  
+  if (clicked) {
+    if (leftRhinoX < 10) {
+    leftRhinoX = leftRhinoX - 0.5;
+  }
+    while (leftRhinoX < -10) {
+      leftRhinoX = leftRhinoX + 0.5;
+    }
+  }
+}
+
+function kissAnimationRight() {
+
+if (clicked) {
+ 
+  if (rightRhinoX < 10) {
+     rightRhinoX = rightRhinoX - 0.5;
+   }
+    while (rightRhinoX < -10) {
+      rightRhinoX = rightRhinoX + 0.5; 
+    }
+    
+ }
+  
+}
 
   
   function drawRhino(x, y, sx, sy, headX) {
@@ -134,4 +165,9 @@ function draw() {
       ellipse (370, 120, 100, 100);
       
     pop();
+    }
+
+    function mouseClicked() {
+  
+      clicked = !clicked; 
     }
