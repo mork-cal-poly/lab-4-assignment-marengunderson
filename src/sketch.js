@@ -3,6 +3,8 @@ let rightRhinoX = 0;
 let clicked = false;
 var fade;
 var fadeAmount = 0;
+var fadeHeart;
+var fadeHeartAmount = 0;
 
 
 function setup() {
@@ -13,6 +15,7 @@ function setup() {
   let myCanvas = createCanvas(750, 600);
   myCanvas.parent("canvas-parent");
   fade = 0;
+  fadeHeart = 0;
 
 }
 
@@ -20,19 +23,27 @@ function draw() {
   background(220);
   drawBackground();
 
+//rhinos
   // x, y, sx, sy, headX
   drawRhino(190, 400, -0.5, 0.5, leftRhinoX);
   drawRhino(545, 400, 0.5, 0.5, rightRhinoX);
   drawBabyRhino(350, 500, -0.25, 0.25, 0);
 
+//heart
+  drawHeart(294, 175);
+
+//animations
   kissAnimationLeft();
   kissAnimationRight();
-  babyRhinoFade();
 
-  
- // leftRhinoX = leftRhinoX - 1;
+//fades
+  babyRhinoFade();
+  heartFade();
 }
 
+//_____ANIMATION FUNCTIONS_____
+
+//LEFT RHINO KISS ANIMATION
 function kissAnimationLeft() {
   
   if (clicked) {
@@ -45,6 +56,7 @@ function kissAnimationLeft() {
   }
 }
 
+//RIGHT RHINO KISS ANIMATION
 function kissAnimationRight() {
 
 if (clicked) {
@@ -60,6 +72,28 @@ if (clicked) {
   
 }
 
+//____FADE FUNCTIONS_____
+
+//HEART FADE IN
+function heartFade() {
+ 
+  if (leftRhinoX <= -10) {
+    
+  
+    translate(294, 175);
+    noStroke(); 
+    
+     if (fadeHeart <= 0) fadeHeartAmount= fadeHeartAmount + 10; 
+   
+   if (fadeHeart>255) fadeHeartAmount; 
+   
+   fadeHeart += fadeHeartAmount; 
+      print(fadeHeart)
+  
+  }
+  }
+
+//BABY FADE IN
 function babyRhinoFade() {
   
   if (leftRhinoX <= -10) {
@@ -73,7 +107,28 @@ fade += fadeAmount;
     
  }
 }
+
+//____DRAW FUNCTIONS____
+
+//HEART
+function drawHeart(x, y) {
   
+  push(); 
+    
+    translate(x, y);
+    noStroke();   
+    
+  //heart 
+   describeElement('Heart');
+    fill(255,0,0, fadeHeart);
+    circle(66.6, 66.6, 20);
+    circle(83.2, 66.6, 20);
+    triangle(91.2, 72.6, 75, 95, 58.6, 72.6);
+    
+  pop();
+  }
+
+//ADULT RHINOS
 function drawRhino(x, y, sx, sy, headX) {
   
     push();
@@ -166,6 +221,7 @@ function drawRhino(x, y, sx, sy, headX) {
     
   }
 
+//BABY RHINO
 function drawBabyRhino(x, y, sx, sy, headX) {
   
   push();
@@ -258,7 +314,8 @@ function drawBabyRhino(x, y, sx, sy, headX) {
     
   }
 
-  function drawBackground() {
+//BACKGROUND
+function drawBackground() {
     push();
     
       //night background
