@@ -17,7 +17,6 @@ function draw() {
   drawRhino(350, 500, -0.25, 0.25, 0);
   
   leftRhinoX = leftRhinoX - 1;
-  drawHiddenCreature(250, 300, 0.25, color(31, 162, 191), color(17, 142, 191));
 }
 
 
@@ -225,6 +224,7 @@ function draw() {
       fill(237, 237, 168, 50);
       triangle(370, 120, 100, 600, 650, 600);
       
+      drawHiddenCreature(365, 160, 0.25, color(31, 162, 191), color(17, 142, 191));
       //moon
       fill(233,237,168);
       ellipse (370, 120, 100, 100);
