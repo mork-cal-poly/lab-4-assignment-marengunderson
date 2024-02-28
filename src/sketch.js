@@ -221,6 +221,101 @@ function drawRhino(x, y, sx, sy, headX) {
     
   }
 
+  function drawHiddenCreature(xSecret, ySecret, scaleSecret, colorHeadRearTail, colorChestSnoutThigh)
+{
+  push();
+  
+    translate(xSecret, ySecret);
+    scale(scaleSecret);
+    
+    
+    //head and neck
+    noStroke();
+    fill(45, 53, 64);
+    rect(80, -250, 40, 70);
+    fill(colorHeadRearTail);
+    ellipse(95, -275, 70);
+    
+    //ear
+    fill(28, 32, 38);
+    triangle(70, -265, 40, -250, 70, -300);
+    
+    //snout
+    fill(colorHeadRearTail);
+    triangle(125, -270, 150, -250, 110, -260);
+    stroke(0)
+    fill(colorChestSnoutThigh);
+    arc(127, -275, 60, 25, PI + HALF_PI, HALF_PI );
+    
+    //nose
+    fill(242, 198, 172);
+    ellipse(153, -280, 10)
+  
+    //body
+    fill(28, 32, 38);
+    quad(50, -130, 60, -205, -50, -200, -50, -160);
+    fill(colorChestSnoutThigh);
+    ellipse(80, -170, 125);
+    fill(colorHeadRearTail);
+    ellipse(-50, -180, 80);
+    
+    //front legs
+    noStroke();
+    fill(10, 11, 13);
+    quad(160, -25, 170, -25, 130, -135, 100, -125);
+    fill(45, 53, 64);
+    quad(140, -25, 150, -25, 110, -135, 80, -125);
+    
+    //rear legs
+    fill(10, 11, 13);
+    triangle(-25, -150, -60, -140, -30, -100);
+    fill(10, 11, 13);
+    quad(-30, -100, -43, -118, -63, -55, -50, -55);
+    fill(45, 53, 64);
+    quad(-50, -88, -63, -108, -83, -43, -70, -43);
+    fill(45, 53, 64);
+    triangle(-40, -140, -50, -85, -80, -140);
+    stroke(0)
+    fill(colorChestSnoutThigh);
+    ellipse(-60, -165, 70);
+    
+    //back most rear paw
+    noStroke();
+    fill(10, 11, 13);
+    quad(-63, -55, -50, -55, -20, -30, -35, -30);
+    fill(45, 53, 64);
+    ellipse(-19, -30, 30, 20);
+    
+    //front most rear paw
+    fill(45, 53, 64);
+    quad(-83, -43, -70, -43, -40, -18, -53, -18);
+    fill(164, 165, 166);
+    ellipse(-40, -20, 30, 20);
+    
+    //front paws
+    fill(70, 80, 89);
+    ellipse(170, -30, 28, 18);
+    fill(164, 165, 166);
+    ellipse(155, -25, 30, 20);
+   
+    //tail
+    fill(28, 32, 38);
+    quad(-85, -200, -120, -255, -110, -255, -70, -213);
+    fill(28, 32, 38);
+    quad(-110, -255, -120, -255, -90, -290, -80, -290);
+    fill(colorHeadRearTail);
+    ellipse(-85, -290, 20);
+   
+    //eye
+    stroke(0)
+    fill(0);
+    ellipse(110, -285, 10);
+    fill(300);
+    ellipse(112, -285, 5);
+  pop();
+}
+
+
 //BABY RHINO
 function drawBabyRhino(x, y, sx, sy, headX) {
   
@@ -316,6 +411,7 @@ function drawBabyRhino(x, y, sx, sy, headX) {
 
 //BACKGROUND
 function drawBackground() {
+
     push();
     
       //night background
@@ -331,6 +427,7 @@ function drawBackground() {
       fill(237, 237, 168, 50);
       triangle(370, 120, 100, 600, 650, 600);
       
+      drawHiddenCreature(365, 160, 0.25, color(31, 162, 191), color(17, 142, 191));
       //moon
       fill(233,237,168);
       ellipse (370, 120, 100, 100);
